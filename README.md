@@ -1,2 +1,2 @@
 # wd2026
-This repository is for wd files
+This repository is for wd files.
