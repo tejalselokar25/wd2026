@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tejal Selokar | Portfolio</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#eef3f9;
+color:#333;
+}
+
+/* NAVBAR */
+
+nav{
+background:#2c3e50;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#1abc9c;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(120deg,#1abc9c,#3498db);
+color:white;
+text-align:center;
+padding:70px 20px;
+}
+
+header img{
+width:170px;
+height:170px;
+border-radius:50%;
+border:6px solid white;
+margin-bottom:15px;
+}
+
+header h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* CONTAINER */
+
+.container{
+width:80%;
+max-width:1000px;
+margin:auto;
+margin-top:40px;
+}
+
+/* SECTIONS */
+
+.section{
+background:white;
+padding:30px;
+margin-bottom:25px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.section:hover{
+transform:translateY(-5px);
+}
+
+.section h2{
+color:#3498db;
+margin-bottom:15px;
+border-bottom:3px solid #3498db;
+display:inline-block;
+padding-bottom:5px;
+}
+
+/* SKILLS */
+
+.skill{
+display:inline-block;
+background:#3498db;
+color:white;
+padding:8px 16px;
+border-radius:20px;
+margin:6px;
+font-size:14px;
+}
+
+.skill:hover{
+background:#1abc9c;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#3498db;
+color:white;
+}
+
+/* PROJECT CARDS */
+
+.projects{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.card{
+background:#f9f9f9;
+padding:15px;
+border-radius:10px;
+flex:1 1 250px;
+border-left:5px solid #3498db;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+background:#ecf7ff;
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#3498db;
+color:white;
+border-radius:25px;
+text-decoration:none;
+}
+
+.btn:hover{
+background:#1abc9c;
+}
+
+/* FOOTER */
+
+footer{
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#education">Education</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<!-- HEADER -->
+
+<header>
+
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Nature Photo">
+
+<h1>Tejal Selokar</h1>
+
+<p>B.Tech CSE (AI & ML) Student | CGPA 9.0</p>
+
+</header>
+
+<div class="container">
+
+<!-- ABOUT -->
+
+<div class="section" id="about">
+
+<h2>About Me</h2>
+
+<p>
+I am Tejal Selokar, a Computer Science Engineering student specializing
+in Artificial Intelligence and Machine Learning. I am passionate about
+technology, programming, and developing intelligent solutions for
+real-world problems.
+</p>
+
+<a class="btn" href="#">Download Resume</a>
+
+</div>
+
+<!-- SKILLS -->
+
+<div class="section" id="skills">
+
+<h2>Skills</h2>
+
+<span class="skill">C</span>
+<span class="skill">C++</span>
+<span class="skill">Python</span>
+<span class="skill">HTML</span>
+<span class="skill">SQL</span>
+
+</div>
+
+<!-- EDUCATION -->
+
+<div class="section" id="education">
+
+<h2>Education</h2>
+
+<table>
+
+<tr>
+<th>Degree</th>
+<th>Branch</th>
+<th>CGPA</th>
+</tr>
+
+<tr>
+<td>B.Tech</td>
+<td>CSE (AI & ML)</td>
+<td>9.0</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- PROJECTS -->
+
+<div class="section" id="projects">
+
+<h2>Projects</h2>
+
+<div class="projects">
+
+<div class="card">
+<h3>Student Management System</h3>
+<p>Database project developed using SQL for managing student data.</p>
+</div>
+
+<div class="card">
+<h3>Portfolio Website</h3>
+<p>Responsive portfolio created using HTML and CSS.</p>
+</div>
+
+<div class="card">
+<h3>Python Mini Projects</h3>
+<p>Collection of small Python programs solving real-life problems.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+
+<div class="section" id="contact">
+
+<h2>Contact</h2>
+
+<p>Email: <a href="mailto:tejalselokar123@gmail.com">tejalselokar123@gmail.com</a></p>
+
+<p>Phone: 1234567890</p>
+
+<p>GitHub: <a href="#">https://github.com/yourprofile</a></p>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 Tejal Selokar | Portfolio Website</p>
+
+</footer>
+
+</body>
+</html>
