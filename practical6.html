@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scholarship / Seminar Registration Form</title>
+</head>
+
+<body bgcolor="#E6F2FF">
+
+<center>
+    <font face="Arial" size="6" color="blue">
+        <b>Scholarship / Seminar Registration Form</b>
+    </font>
+</center>
+
+<br>
+
+<form>
+
+    <!-- Apply For -->
+    <fieldset>
+        <legend><font color="darkblue"><b>Apply For</b></font></legend>
+
+        <input type="radio" name="type" value="Scholarship" required>
+        Scholarship
+
+        <input type="radio" name="type" value="Seminar">
+        Seminar
+    </fieldset>
+
+    <br>
+
+    <!-- Personal Information -->
+    <fieldset>
+        <legend><font color="darkgreen"><b>Personal Information</b></font></legend>
+
+        <font face="Verdana">
+
+        Full Name:<br>
+        <input type="text" name="fullname" required><br><br>
+
+        Email ID:<br>
+        <input type="email" name="email" required><br><br>
+
+        Mobile Number:<br>
+        <input type="tel" name="mobile" required><br><br>
+
+        Gender:<br>
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+
+        </font>
+    </fieldset>
+
+    <br>
+
+    <!-- Academic Details -->
+    <fieldset>
+        <legend><font color="purple"><b>Academic Details</b></font></legend>
+
+        <font face="Tahoma">
+
+        Course:<br>
+        <select name="course" required>
+            <option value="">--Select Course--</option>
+            <option>BCA</option>
+            <option>BSc</option>
+            <option>BTech</option>
+            <option>MCA</option>
+        </select><br><br>
+
+        Year of Study:<br>
+        <input type="radio" name="year" value="First Year" required> First Year
+        <input type="radio" name="year" value="Second Year"> Second Year
+        <input type="radio" name="year" value="Third Year"> Third Year
+
+        </font>
+    </fieldset>
+
+    <br>
+
+    <!-- Preferences -->
+    <fieldset>
+        <legend><font color="brown"><b>Preferences</b></font></legend>
+
+        <font face="Courier New">
+
+        Areas of Interest:<br>
+        <input type="checkbox" name="interest" value="AI"> Artificial Intelligence<br>
+        <input type="checkbox" name="interest" value="Web Development"> Web Development<br>
+        <input type="checkbox" name="interest" value="Cyber Security"> Cyber Security<br><br>
+
+        Mode of Participation:<br>
+        <select name="mode" required>
+            <option value="">--Select Mode--</option>
+            <option>Online</option>
+            <option>Offline</option>
+        </select>
+
+        </font>
+    </fieldset>
+
+    <br>
+
+    <!-- Buttons -->
+    <center>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </center>
+
+</form>
+
+</body>
+</html>
