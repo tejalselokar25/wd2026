@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Generator Ultimate</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background: linear-gradient(to right,#eef1fb,#dfe6ff);
+    font-family:'Segoe UI',sans-serif;
+}
+.dark{
+    background:#1e1e2f;
+    color:white;
+}
+.section{display:none;}
+.active{display:block;}
+.card{
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+}
+.progress{height:10px;}
+#suggestions{
+    font-size:14px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-primary">
+<div class="container">
+<span class="navbar-brand">🔐 Password Generator</span>
+<div>
+<button class="btn btn-light btn-sm" onclick="showSection('home')">Home</button>
+<button class="btn btn-light btn-sm" onclick="showSection('settings')">Settings</button>
+<button class="btn btn-light btn-sm" onclick="showSection('generator')">Generator</button>
+<button class="btn btn-light btn-sm" onclick="showSection('history')">History</button>
+<button class="btn btn-light btn-sm" onclick="showSection('help')">Help</button>
+<button class="btn btn-warning btn-sm" onclick="toggleDark()">🌙</button>
+</div>
+</div>
+</nav>
+
+<div class="container mt-4">
+
+<!-- HOME -->
+<div id="home" class="section active card p-4">
+<h4>👤 User Info</h4>
+<input type="text" id="firstname" class="form-control mb-2" placeholder="First Name">
+<input type="text" id="lastname" class="form-control mb-2" placeholder="Surname">
+<input type="email" id="email" class="form-control mb-2" placeholder="Email">
+<button class="btn btn-primary" onclick="startApp()">Continue ➡</button>
+</div>
+
+<!-- SETTINGS -->
+<div id="settings" class="section card p-4">
+<h4>⚙️ Settings</h4>
+
+<label>Password Length: <b id="lenVal">10</b></label>
+<input type="range" id="passLength" min="6" max="32" value="10"
+class="form-range"
+oninput="lenVal.innerText=this.value">
+
+<div><input type="checkbox" id="upper" checked> Uppercase</div>
+<div><input type="checkbox" id="lower" checked> Lowercase</div>
+<div><input type="checkbox" id="number" checked> Numbers</div>
+<div><input type="checkbox" id="symbol"> Symbols</div>
+
+<div class="mt-3">
+<button class="btn btn-secondary" onclick="showSection('home')">⬅ Back</button>
+<button class="btn btn-success" onclick="goGenerator()">Next ➡</button>
+</div>
+</div>
+
+<!-- GENERATOR -->
+<div id="generator" class="section card p-4">
+<h4>🔑 Generator</h4>
+
+<div class="input-group mb-2">
+<input type="password" id="password" class="form-control">
+<button class="btn btn-outline-secondary" onclick="togglePassword()">👁️</button>
+</div>
+
+<div class="d-flex gap-2 mb-3 flex-wrap">
+<button class="btn btn-primary" onclick="generatePassword()">Generate</button>
+<button class="btn btn-secondary" onclick="copyPassword()">Copy</button>
+<button class="btn btn-outline-secondary" onclick="showSection('settings')">⬅ Back</button>
+<button class="btn btn-outline-primary" onclick="goHome()">🏠 Home</button>
+</div>
+
+<!-- LOADING -->
+<div id="loading" class="text-center mb-2" style="display:none;">
+⏳ Generating...
+</div>
+
+<p>Strength: <b id="percent">0%</b> | <b id="label">Weak</b></p>
+<div class="progress mb-2">
+<div id="bar" class="progress-bar"></div>
+</div>
+
+<p>⏳ Crack Time: <b id="crack">Instant</b></p>
+
+<!-- SUGGESTIONS -->
+<div id="suggestions"></div>
+
+</div>
+
+<!-- HISTORY -->
+<div id="history" class="section card p-4">
+<h4>📜 History</h4>
+<div id="historyList"></div>
+<button class="btn btn-danger mt-2" onclick="clearHistory()">Clear</button>
+</div>
+
+<!-- HELP -->
+<div id="help" class="section card p-4">
+<h4>❓ Help</h4>
+<p>Use all options for strongest password.</p>
+</div>
+
+</div>
+
+<!-- TOAST -->
+<div class="position-fixed bottom-0 end-0 p-3">
+<div id="toastBox" class="toast text-white">
+<div class="d-flex">
+<div class="toast-body" id="toastMsg"></div>
+<button class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+// NAVIGATION
+function showSection(id){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+// START
+function startApp(){
+if(firstname.value.trim().length<2 || lastname.value.trim().length<2){
+showToast("Enter valid name","danger"); return;
+}
+if(!email.value.includes("@")){
+showToast("Enter valid email","danger"); return;
+}
+showToast("Welcome "+firstname.value,"success");
+showSection("settings");
+}
+
+// SETTINGS
+function goGenerator(){
+if(!upper.checked&&!lower.checked&&!number.checked&&!symbol.checked){
+showToast("Select at least one option","danger"); return;
+}
+showSection("generator");
+}
+
+// GENERATE
+function generatePassword(){
+
+loading.style.display="block";
+
+setTimeout(()=>{
+
+let len=parseInt(passLength.value)||10;
+
+let sets=[];
+if(upper.checked) sets.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+if(lower.checked) sets.push("abcdefghijklmnopqrstuvwxyz");
+if(number.checked) sets.push("0123456789");
+if(symbol.checked) sets.push("!@#$%^&*");
+
+let all=sets.join("");
+let res=[];
+
+sets.forEach(s=>res.push(s[Math.floor(Math.random()*s.length)]));
+
+while(res.length<len){
+res.push(all[Math.floor(Math.random()*all.length)]);
+}
+
+// shuffle
+for(let i=res.length-1;i>0;i--){
+let j=Math.floor(Math.random()*(i+1));
+[res[i],res[j]]=[res[j],res[i]];
+}
+
+let final=res.join("").substring(0,len);
+
+password.value=final;
+
+checkStrength(final);
+saveHistory(final);
+
+loading.style.display="none";
+
+showToast("Generated ✔","success");
+
+},500);
+}
+
+// STRENGTH + SUGGESTIONS
+function checkStrength(p){
+
+let score=0;
+let tips=[];
+
+if(p.length>=8) score+=15; else tips.push("Use at least 8 characters");
+if(p.length>=12) score+=15; else tips.push("Increase length to 12+");
+if(/[A-Z]/.test(p)) score+=20; else tips.push("Add uppercase letters");
+if(/[a-z]/.test(p)) score+=20; else tips.push("Add lowercase letters");
+if(/[0-9]/.test(p)) score+=15; else tips.push("Include numbers");
+if(/[!@#$%^&*]/.test(p)) score+=15; else tips.push("Include symbols");
+
+percent.innerText=score+"%";
+bar.style.width=score+"%";
+
+if(score<40){
+label.innerText="Weak";
+bar.className="progress-bar bg-danger";
+crack.innerText="Seconds";
+}
+else if(score<70){
+label.innerText="Medium";
+bar.className="progress-bar bg-warning";
+crack.innerText="Hours";
+}
+else{
+label.innerText="Strong";
+bar.className="progress-bar bg-success";
+crack.innerText="Years";
+}
+
+// suggestions
+if(score<100){
+suggestions.innerHTML="💡 Suggestions:<br>• "+tips.join("<br>• ");
+}else{
+suggestions.innerHTML="✅ Perfect strong password!";
+}
+
+}
+
+// COPY
+function copyPassword(){
+if(password.value===""){showToast("Generate first","warning");return;}
+navigator.clipboard.writeText(password.value);
+showToast("Copied 📋","info");
+}
+
+// TOGGLE
+function togglePassword(){
+password.type=password.type==="password"?"text":"password";
+}
+
+// HOME
+function goHome(){
+showSection("home");
+password.value="";
+suggestions.innerHTML="";
+}
+
+// HISTORY
+function saveHistory(p){
+let list=JSON.parse(localStorage.getItem("history")||"[]");
+list.unshift(p);
+localStorage.setItem("history",JSON.stringify(list));
+loadHistory();
+}
+function loadHistory(){
+let list=JSON.parse(localStorage.getItem("history")||"[]");
+historyList.innerHTML=list.map(p=>"<div>"+p+"</div>").join("");
+}
+function clearHistory(){
+localStorage.removeItem("history");
+loadHistory();
+}
+
+// TOAST
+function showToast(msg,type){
+toastBox.className="toast text-white bg-"+type;
+toastMsg.innerText=msg;
+new bootstrap.Toast(toastBox).show();
+}
+
+loadHistory();
+
+</script>
+
+</body>
+</html>

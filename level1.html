@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator Tool</title>
+</head>
+
+<body bgcolor="#eef1fb">
+
+<header id="home">
+    <center>
+        <table width="65%" bgcolor="#dcd6f7" cellpadding="12">
+            <tr>
+                <td align="center">
+                    <font size="6" color="#2c2c54"><b>🔐 Password Generator Tool</b></font><br>
+                    <font color="#5a5a89">➤ Secure • Reliable • Professional</font>
+                </td>
+            </tr>
+        </table>
+    </center>
+</header>
+
+<br>
+
+<nav>
+    <center>
+        <a href="#home">🏠 Home</a> &nbsp; | &nbsp;
+        <a href="#generate">⚙️ Generate</a> &nbsp; | &nbsp;
+        <a href="#tips">🔒 Security Tips</a> &nbsp; | &nbsp;
+        <a href="#help">❓ Help</a>
+    </center>
+</nav>
+
+<br>
+
+<main id="generate">
+<center>
+
+<table width="65%" bgcolor="#ffffff" border="1" cellpadding="20">
+
+<tr>
+<td>
+
+<form>
+
+<section>
+    <table width="100%" bgcolor="#e6e9fb" cellpadding="10">
+        <tr>
+            <td><b>🔑 Generated Password</b></td>
+            <font>✨ Create Strong & Secure Passwords ✨</font>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="text" size="40"
+                placeholder="➤ Your password will appear here"
+                pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}"
+                title="✔ Must contain uppercase, lowercase, number, symbol (min 8 characters)">
+                
+                <button type="button">🔐 Copy Password</button>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<br>
+
+<section>
+    <table width="100%" bgcolor="#f4f6ff" cellpadding="10">
+
+        <tr>
+            <td colspan="2"><b>⚙️ Password Settings</b></td>
+        </tr>
+
+        <tr>
+            <td>🔢 Password Length</td>
+            <td><input type="range" min="6" max="20" value="10"></td>
+        </tr>
+
+        <tr>
+            <td>🔠 Include Uppercase</td>
+            <td><input type="checkbox" checked></td>
+        </tr>
+
+        <tr>
+            <td>🔡 Include Lowercase</td>
+            <td><input type="checkbox" checked></td>
+        </tr>
+
+        <tr>
+            <td>🔢 Include Numbers</td>
+            <td><input type="checkbox" checked></td>
+        </tr>
+
+        <tr>
+            <td>💠 Include Symbols</td>
+            <td><input type="checkbox"></td>
+        </tr>
+
+    </table>
+</section>
+
+<br>
+
+<section>
+    <table width="100%" bgcolor="#e6e9fb" cellpadding="10">
+        <tr>
+            <td align="center">
+                <button type="submit">✨ Generate Password</button>
+                &nbsp;&nbsp;
+                <button type="reset">🔄 Reset</button>
+            </td>
+        </tr>
+    </table>
+</section>
+
+</form>
+
+</td>
+</tr>
+
+</table>
+
+</center>
+</main>
+
+<br>
+
+<section id="tips">
+    <center>
+        <table width="65%" bgcolor="#f4f6ff" cellpadding="10">
+            <tr>
+                <td align="center">
+                    🔒 Tip: Use uppercase, lowercase, numbers & symbols for strong security
+                </td>
+            </tr>
+        </table>
+    </center>
+</section>
+
+<br>
+
+<footer id="help">
+    <center>
+        <table width="65%" bgcolor="#dcd6f7" cellpadding="10">
+            <tr>
+                <td align="center">
+                    ❓ Need Help? Ensure your password meets all strength rules.<br>
+                    © 2026 Password Generator Tool
+                </td>
+            </tr>
+        </table>
+    </center>
+</footer>
+
+</body>
+</html>
