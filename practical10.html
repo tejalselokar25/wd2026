@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HTML iFrame Example</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(to right,#74ebd5,#ACB6E5);
+}
+
+header{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:20px;
+}
+
+.section{
+    background:white;
+    padding:20px;
+    margin-bottom:30px;
+    border-radius:15px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.3);
+}
+
+h2{
+    text-align:center;
+    color:#333;
+}
+
+iframe{
+    width:100%;
+    border:none;
+    border-radius:10px;
+}
+
+/* Responsive iframe */
+.map-container{
+    position:relative;
+    overflow:hidden;
+    width:100%;
+    padding-top:56.25%;
+}
+
+.map-container iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>HTML iFrame and Map Embedding</h1>
+    <p>Embedding External Pages and Google Maps using iFrame</p>
+</header>
+
+<div class="container">
+
+    <!-- External Webpage -->
+    <div class="section">
+        <h2>Embedded External Webpage</h2>
+
+        <iframe 
+            src="https://www.wikipedia.org/" 
+            title="Wikipedia Website"
+            height="400"
+            loading="lazy">
+        </iframe>
+
+    </div>
+
+    <!-- Google Map -->
+    <div class="section">
+        <h2>Embedded Google Map</h2>
+
+        <div class="map-container">
+
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.5122778585657!2d79.0882!3d21.1458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c08bffffffff%3A0x1234567890abcdef!2sNagpur!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            title="Google Map">
+            </iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

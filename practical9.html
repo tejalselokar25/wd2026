@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive CSS3 Webpage</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(to right,#74ebd5,#ACB6E5);
+    color:#222;
+}
+
+/* Header */
+header{
+    text-align:center;
+    padding:30px;
+    background:#222;
+    color:white;
+}
+
+header h1{
+    font-size:40px;
+    animation: glow 2s infinite alternate;
+}
+
+/* Animation */
+@keyframes glow{
+    from{
+        letter-spacing:2px;
+    }
+    to{
+        letter-spacing:8px;
+        color:yellow;
+    }
+}
+
+/* Navigation */
+nav{
+    background:#444;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:15px 25px;
+    transition:0.5s;
+}
+
+nav a:hover{
+    background:orange;
+    transform:scale(1.1);
+}
+
+/* Multiple Columns */
+.content{
+    padding:30px;
+    column-count:3;
+    column-gap:40px;
+    column-rule:3px solid black;
+    text-align:justify;
+}
+
+.content p{
+    margin-bottom:15px;
+}
+
+/* Cards Section */
+.container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    padding:30px;
+}
+
+.card{
+    width:250px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    transition:0.5s;
+}
+
+.card:hover{
+    transform:rotate(5deg) scale(1.05);
+}
+
+.card i{
+    font-size:50px;
+    color:#ff5722;
+    margin-bottom:15px;
+}
+
+/* Button Animation */
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    background:#ff5722;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:0.5s;
+}
+
+.btn:hover{
+    background:black;
+    transform:translateY(-5px);
+}
+
+/* Responsive Design */
+@media screen and (max-width:768px){
+
+    .content{
+        column-count:1;
+    }
+
+    header h1{
+        font-size:28px;
+    }
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>CSS3 Responsive Webpage</h1>
+    <p>Using Columns, Fonts, Icons, Animations & Transformations</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="content">
+    <p>
+        Responsive web design is an approach that makes web pages look good on all devices. 
+        CSS3 provides features such as media queries, multiple columns, animations, and transformations 
+        that help developers create attractive and adaptive websites.
+    </p>
+
+    <p>
+        CSS3 multiple columns allow content to be displayed like newspapers. 
+        Transformations can rotate, scale, skew, or move elements. 
+        Animations make webpages interactive and visually appealing.
+    </p>
+
+    <p>
+        Web fonts and icons improve the appearance of the webpage. 
+        Font Awesome icons are widely used in modern web development because they are scalable and stylish.
+    </p>
+</section>
+
+<div class="container">
+
+    <div class="card">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h2>Web Design</h2>
+        <p>Create modern and responsive websites using HTML5 and CSS3.</p>
+        <a href="#" class="btn">Read More</a>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <h2>Responsive</h2>
+        <p>Pages automatically adjust according to screen size.</p>
+        <a href="#" class="btn">Explore</a>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-palette"></i>
+        <h2>Creative UI</h2>
+        <p>Use animations, colors, and transformations for better design.</p>
+        <a href="#" class="btn">Learn More</a>
+    </div>
+
+</div>
+
+</body>
+</html>
